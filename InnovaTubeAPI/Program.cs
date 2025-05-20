@@ -14,7 +14,7 @@ builder.Services.AddCors(opciones =>
 {
     opciones.AddDefaultPolicy(politica =>
     {
-        politica.WithOrigins("https://innovatube-webapp-production.up.railway.app").AllowAnyHeader().AllowAnyMethod();
+        politica.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
     });
 });
 
@@ -24,11 +24,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 
