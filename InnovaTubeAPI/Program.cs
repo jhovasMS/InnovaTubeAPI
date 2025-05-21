@@ -13,11 +13,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
+
 builder.Services.AddCors(opciones =>
 {
     opciones.AddDefaultPolicy(politica =>
     {
-        politica.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+        politica.WithOrigins(origenesPermitidos).AllowAnyHeader().AllowAnyMethod();
     });
 });
 
