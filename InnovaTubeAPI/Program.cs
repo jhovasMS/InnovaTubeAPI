@@ -22,7 +22,7 @@ builder.Services.AddCors(opciones =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
-    opciones.UseNpgsql("name=DefaultConnection"));
+    opciones.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
