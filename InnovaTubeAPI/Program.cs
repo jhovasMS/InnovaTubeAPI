@@ -38,8 +38,6 @@ builder.Services.AddAuthentication().AddJwtBearer(opciones =>
     };
 });
 
-builder.Services.AddScoped<UserManager<IdentityUser>>();
-builder.Services.AddScoped<SignInManager<IdentityUser>>();
 
 var origenesPermitidos = builder.Configuration.GetValue<string>("OrigenesPermitidos")!.Split(",");
 
