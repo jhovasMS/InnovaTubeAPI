@@ -21,15 +21,15 @@ namespace InnovaTubeAPI.Controllers
             return await context.VideosFavoritos.ToListAsync();
         }
 
-        [HttpGet("{idVideoYouTube")]
-        public async Task<ActionResult<VideoFavorito>> Get([FromRoute] string idVideoYouTube)
+        [HttpGet("{idVideoYouTube}")]
+        public async Task<ActionResult<Boolean>> Get([FromRoute] string idVideoYouTube)
         {
             var videoFavorito = await context.VideosFavoritos.FirstOrDefaultAsync(x => x.IdVideoYouTube == idVideoYouTube);
             if(videoFavorito is null)
             {
-                return NotFound();
+                return false;
             }
-            return videoFavorito;
+            return true;
         }
 
 
